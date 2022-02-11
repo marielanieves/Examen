@@ -1,0 +1,5 @@
+package com.marielanievesfullstack.app.service;
+
+public interface Userservice {
+
+}

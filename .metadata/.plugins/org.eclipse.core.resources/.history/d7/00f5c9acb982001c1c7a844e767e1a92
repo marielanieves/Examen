@@ -1,0 +1,40 @@
+package com.marielanievesfullstack.app.control;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.marielanievesfullstack.app.entity.user;
+import com.marielanievesfullstack.app.service.userservice;
+
+@RestController
+@RequestMapping("/api/users")
+public class UserControl {
+	@Autowired
+	private userservice USERservice; 
+	
+	//create a new user
+	@PostMapping
+    public ResponseEntity<?> create(@RequestBody user User){
+	return ResponseEntity.status(HttpStatus.CREATED).body(USERservice.save(User));
+	}
+	
+	@GetMapping("/{id}")
+
+	public ResponseEntity<?> read (@PathVariable(value = "id")Long userid){
+	Optional<user> OUser = USERservice.findById(userid);
+	if(! OUser.isPresent()) { 
+		return ResponseEntity.notFound().build();
+		
+	}
+	return ResponseEntity.ok(OUser);
+}
+}

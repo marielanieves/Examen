@@ -1,0 +1,47 @@
+package com.marielanievesfullstack.app.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.marielanievesfullstack.app.entity.user;
+import com.marielanievesfullstack.app.repository.userrepository;
+
+@Service
+public class userserviceimp implements userservice{
+    @Autowired
+    private userrepository useRrepository;
+	@Override
+	public Iterable<user> findAll() {
+		
+		return null;
+	}
+
+	@Override
+	public Page<user> findAll(Pageable pageable) {
+		
+		return null;
+	}
+
+	@Override
+	public Optional<user> findById(Long id) {
+		
+		return null;
+	}
+
+	@Override
+	public user save(user User) {
+		
+		return null;
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		
+		
+	}
+
+}
